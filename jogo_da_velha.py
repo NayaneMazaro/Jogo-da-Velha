@@ -63,20 +63,22 @@ board[1][1] = 'X' # primeiro 'X' no meio
 livre = lista_campos_livres(board)
 turno_jogador = True
 
+print('Nesse jogo você jogará com "O" contra a máquina, boa sorte!\n')
+display_board(board)
+
 while len(livre):
-    display_board(board)
     if turno_jogador:
         mov_jogador(board)
         vitoria = vitoria_para(board, "O")
     else:
         mov_computador(board)
         vitoria = vitoria_para(board, "X")
+        display_board(board)
     if vitoria != None:
         break
     turno_jogador = not turno_jogador
     livre = lista_campos_livres(board)
     
-display_board(board)
 if vitoria == "Você":
     print("Você ganhou!")
 elif vitoria == "Eu":
